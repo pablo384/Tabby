@@ -3,8 +3,8 @@ package com.pablo384.tabby.Adapters
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.app.ListFragment
 import com.pablo384.tabby.Fragments.FormFragment
+import com.pablo384.tabby.Fragments.ListFragment
 
 /**
  * Created by pablo384 on 26/08/17.
