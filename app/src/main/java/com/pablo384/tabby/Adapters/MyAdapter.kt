@@ -45,6 +45,9 @@ class MyAdapter(val context: Context, val list: ArrayList<Person>) : BaseAdapter
         return view
 
     }
+    fun addobj(){
+        notifyDataSetChanged()
+    }
 
     private class ListHolder(view: View){
         val name:TextView = view.findViewById(R.id.textViewName)

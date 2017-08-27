@@ -14,7 +14,9 @@ import com.pablo384.tabby.R
 import kotlinx.android.synthetic.main.fragment_form.*
 import kotlinx.android.synthetic.main.fragment_form.view.*
 import android.R.array
+import android.content.Context
 import android.widget.Toast
+import com.pablo384.tabby.Interfaces.FormFragmentCommunication
 
 
 /**
@@ -22,6 +24,20 @@ import android.widget.Toast
  */
 class FormFragment : Fragment() {
 
+    private lateinit var comunication:FormFragmentCommunication
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            comunication = context as FormFragmentCommunication
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -33,7 +49,10 @@ class FormFragment : Fragment() {
 
         view.spinnerCountry.adapter=adapter
 
-        view.buttonAdd.setOnClickListener { Toast.makeText(this.context,"Nombre: ${editTextName.text} y pais ${spinnerCountry.selectedItem.toString()}", Toast.LENGTH_SHORT).show() }
+        view.buttonAdd.setOnClickListener {
+            comunication.sendPerson(Person(view.editTextName.text.toString(), Country(spinnerCountry.selectedItem.toString())))
+
+        }
 
 
 
